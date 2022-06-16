@@ -11,6 +11,19 @@ const getIngredients = async (req, res = response) => {
   }
 };
 
+const findIngredientByName = async (req, res = response) => {
+  try {
+    const { name } = req.params;
+    console.log(name);
+    const ingredients = await Ingredient.find({ name: 'patata' });
+    console.log('ingredientes', ingredients);
+    res.status(201).json(ingredients);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Error al obtener los ingredientes' });
+  }
+};
+
 const createIngredient = async (req, res = response) => {
   const { name } = req.body;
   try {
@@ -81,4 +94,5 @@ module.exports = {
   createIngredient,
   editIngredient,
   deleteIngredient,
+  findIngredientByName,
 };

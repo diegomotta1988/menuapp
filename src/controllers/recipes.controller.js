@@ -73,12 +73,28 @@ const deleteRecipe = async (req, res = response) => {
   }
 };
 
+const searchRecipesByText = async (req, res = response) => {
+  const { text } = req.params;
+  console.log('búsqueda', text);
+  try {
+    const recipes = await Recipe.find({ $text: { $search: text } });
+
+    res.status(201).json(recipes);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: 'Por favor hable con el administrador',
+    });
+  }
+};
+
 const searchRecipesByIngredient = async (req, res = response) => {
   const { ingredient } = req.params;
   console.log('búsqueda', ingredient);
   try {
     const recipes = await Recipe.find({
-      ingredient: { $elemMatch: { name: ingredient } },
+      'recipe.name': { $regex: `/${ingredient}/` },
     });
 
     res.status(201).json(recipes);
@@ -96,5 +112,6 @@ module.exports = {
   createRecipe,
   editRecipe,
   deleteRecipe,
+  searchRecipesByText,
   searchRecipesByIngredient,
 };
