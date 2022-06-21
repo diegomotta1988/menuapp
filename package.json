@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node src/index.js",
-    "start-nodemon": "nodemon src/index.js"
+    "dev": "nodemon -r dotenv/config src/index.js"
   },
   "keywords": [
     "menu",
