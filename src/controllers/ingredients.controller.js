@@ -11,11 +11,14 @@ const getIngredients = async (req, res = response) => {
   }
 };
 
-const getIngredientByName = async (req, res = response) => {
+const getIngredientByNameOrPartialName = async (req, res = response) => {
   try {
     const { name } = req.params;
     console.log(name);
-    const ingredients = await Ingredient.find({ name: `/${name}/` });
+    const ingredients = await Ingredient.find(
+      { name: { $regex: `.*${name}`, $options: 'i' } },
+      { name: 1 }
+    );
     console.log('ingredientes', ingredients);
     res.status(201).json(ingredients);
   } catch (error) {
@@ -94,5 +97,5 @@ module.exports = {
   createIngredient,
   editIngredient,
   deleteIngredient,
-  getIngredientByName,
+  getIngredientByNameOrPartialName,
 };

@@ -4,13 +4,16 @@ const {
   createIngredient,
   editIngredient,
   deleteIngredient,
-  getIngredientByName,
+  getIngredientByNameOrPartialName,
 } = require('../controllers/ingredients.controller.js');
 const ingredientRoutes = Router({ mergeParams: true });
 
 ingredientRoutes.get('/', getIngredients);
 
-ingredientRoutes.get('/getIngredientByName/:name', getIngredientByName);
+ingredientRoutes.get(
+  '/getIngredientByName/:name',
+  getIngredientByNameOrPartialName
+);
 
 ingredientRoutes.post('/', createIngredient);
 
