@@ -1,5 +1,15 @@
 const { Schema, model } = require('mongoose');
 
+/**
+ * INGREDIENT_TYPES:
+  Pescado
+  Carne
+  Verdura
+  Fruta
+  Legumbre
+  Lácteo
+*/
+
 const IngredientTypeSchema = new Schema({
   name: {
     type: String,
