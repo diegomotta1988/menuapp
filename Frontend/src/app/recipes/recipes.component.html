@@ -1,1 +1,4 @@
-<app-meals-list [mealsList]="[]"></app-meals-list>
+<app-meals-list
+  *ngIf="recipesList"
+  [mealsList]="recipesList.items"
+></app-meals-list>
