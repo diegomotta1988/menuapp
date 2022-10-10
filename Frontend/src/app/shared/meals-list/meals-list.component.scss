@@ -1,0 +1,27 @@
+.recipes-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .col {
+    display: flex;
+    padding: 1rem;
+    width: auto;
+
+    mat-card {
+      min-height: 570px;
+      max-width: 300px;
+
+      .mat-chip-avatar {
+        border-radius: 0;
+        margin: 0;
+      }
+
+      .mat-standard-chip {
+        padding: 4px;
+      }
+    }
+  }
+}

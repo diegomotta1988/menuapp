@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-card:not([class*="mat-elevation-z"]) {
+  -webkit-box-shadow: 9px 11px 15px 8px rgba(0, 0, 0, 0.53);
+  box-shadow: 9px 11px 15px 8px rgba(0, 0, 0, 0.53);
+  transition: all 0.1s;
+  cursor: pointer;
+  &:hover {
+    transform: scale3d(1.05, 1.05, 1);
+  }
+}
