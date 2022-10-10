@@ -14,7 +14,7 @@ const getRecipes = async (req, res = response) => {
 };
 
 const createRecipe = async (req, res = response) => {
-  const { name, instructions, ingredients } = req.body;
+  const { name, instructions, ingredients, ingredientTypes } = req.body;
   try {
     let recipe = await Recipe.findOne({ name });
     if (recipe) {
@@ -23,7 +23,7 @@ const createRecipe = async (req, res = response) => {
         msg: 'La receta ya existe',
       });
     }
-    recipe = new Recipe({ name, instructions, ingredients });
+    recipe = new Recipe({ name, instructions, ingredients, ingredientTypes });
     await recipe.save();
     res.status(201).json({
       ok: true,
